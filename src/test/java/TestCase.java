@@ -5,6 +5,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class TestCase {
+    AndroidDriver driver;
+
     @FindBy(id = "com.google.android.calculator:id/digit_8")
     MobileElement btn_8;
     @FindBy(id = "com.google.android.calculator:id/op_add")
@@ -15,6 +17,7 @@ public class TestCase {
     MobileElement result;
 
     public TestCase(AndroidDriver driver) {
+        this.driver = driver;
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
 
@@ -22,6 +25,7 @@ public class TestCase {
         btn_8.click();
         btn_Plus.click();
         btn_5.click();
+        System.out.println(result.getText());
         return result.getText();
     }
 }
